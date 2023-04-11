@@ -14,12 +14,10 @@ public class JunitExampleSearch {
         //click on Wiki section
         $("#wiki-tab").click();
         //insure SoftAssertions page is in the Pages list
-        $("ul li.wiki-more-pages-link button").click();
-        $("div.wiki-rightbar").$(byText("Soft Assertions"));
-        //Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
-        $("div.wiki-rightbar").$$("#wiki-pages-box ul li.wiki-more-pages.px-2")
-                .last().$("a").click();
-        $("h1").shouldHave(text("SoftAssertions"));
+        $("#wiki-pages-box").$(byText("Show 2 more pages…")).click();
+        //open SoftAssertions, check code example for JUnit5
+        $("#wiki-pages-box").$(byText("SoftAssertions")).click();
+        $(".markdown-body").shouldHave(text("Using JUnit5 extend test class"));
         sleep(5000);
     }
 }
